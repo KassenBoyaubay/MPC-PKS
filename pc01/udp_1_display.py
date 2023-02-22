@@ -8,7 +8,7 @@ port = 50000
 udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 #zaslani zpravy
-n = udp_socket.sendto(b"Ahoj", (host, port))
+n = udp_socket.sendto(b"Kassen", (host, port))
 print("Odeslano {} byte\n".format(n))
 
 #uzavreni socketu
