@@ -2,6 +2,8 @@ import socket
 import struct
 import time
 
+file = "udp.log"
+
 #adresa a port prijemce (zada vyucujici)
 dst_host = "147.229.150.101"
 dst_port = 50000
@@ -9,11 +11,12 @@ dst_port = 50000
 #vytvoreni socketu
 udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-Rn1 = 71
+fo = open(file, "a") #soubor otevřít v řežimu “append”
+
 for i in range(5):
     seq = i    
     n1 = 71
-    n2 = Rn1
+    n2 = 10
 
     #seq, n1 a n2 jsou prenasena cisla
     msg = struct.pack("!LLL", seq, n1, n2)
@@ -32,8 +35,11 @@ for i in range(5):
     else:
         lg = "a={}, p={}, s={}, n1={}, n2 ={}".format(*address, Rseq, Rn1, Rn2)
         print(lg)
+        fo.write(lg + "\n") #přidat znak nového řádku
     
     time.sleep(0.5)
+
+fo.close
 
 #uzavreni socketu
 udp_socket.close()  
