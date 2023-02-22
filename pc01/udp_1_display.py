@@ -12,4 +12,4 @@ n = udp_socket.sendto(b"Ahoj", (host, port))
 print("Odeslano {} byte\n".format(n))
 
 #uzavreni socketu
-udp_socket.close()
+udp_socket.close()  
